@@ -1,4 +1,33 @@
-/* Basic reset for styling */
+/*--------------------------RESET STYLES---------------------------*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/*--------------------------RESET END-----------------------------*/
+
+/* Base Styles for Mobile-First Design */
 body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
@@ -6,30 +35,34 @@ body {
   padding: 0;
 }
 
-/* Header styling */
 header {
   background-color: #143658;
   color: white;
   text-align: center;
   padding: 1em 0;
+  position: relative;
 }
+
 header h1 a {
-  padding: 0.5em 1em;
+  padding: 0.2em;
   color: white;
+  text-decoration: none;
 }
+
 header h1 a:focus {
   outline: 2px solid #f2f2f2;
 }
+
 header h1 a:active, header h1 a:visited {
-  color: white; /* Ensure the link remains white in all states */
+  color: white;
 }
+
 header h1 a:hover {
   background-color: #f2f2f2;
   color: #143658;
   border-radius: 12px;
 }
 
-/* Navigation styling */
 nav ul {
   display: flex;
   justify-content: center;
@@ -37,141 +70,136 @@ nav ul {
   list-style: none;
   background-color: #143658;
 }
+
 nav ul li {
   margin: 0 10px;
 }
+
 nav ul li a {
   color: white;
   text-decoration: none;
   padding: 0.5em;
 }
+
 nav ul li a:hover {
   background-color: #f2f2f2;
   color: #143658;
   border-radius: 12px;
 }
+
 nav ul li a:focus {
   outline: 2px solid #f2f2f2;
 }
 
-/* Main content */
 main {
   padding: 1em;
 }
-.container {
-  grid-template-columns: 1fr 1fr;
-}
+
 a {
   color: #143658;
   text-decoration: none;
 }
+
 #team-results h2 {
   text-align: center;
 }
 
-/* Responsive grid for athletes */
+/* Individual Results Section */
 #individual-results {
-  display: grid;
-  gap: 20px; /* Adjust the gap as needed */
+  padding: 20px 0;
 }
-#individual-results > :first-child {
-  grid-column: span 4;
+
+#individual-results h2 {
   text-align: center;
 }
-#individual-results > :nth-child(n+2) {
+
+.grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+  grid-template-columns: 1fr; /* Single column by default for mobile */
+  gap: 20px;
 }
+
 #individual-results .athlete {
   border: 4px solid #ccc;
   border-radius: 8px;
   padding: 10px;
   text-align: center;
-  background-color: #ddd; /* Optional: Background color for better visibility */
+  background-color: #ddd;
 }
+
 #individual-results figure {
-  margin: 0; /* Remove default margin */
+  margin: 0;
 }
-/* Ensure images fit within their containers */
+
 #individual-results img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
 }
+
 #individual-results dl {
-  margin: 10px 0; /* Adjust margins as needed */
-  text-align: left; /* Align text to the left for better readability */
-  background-color: #f9f9f9; /* Match the table background color */
-  padding: 10px; /* Add padding for better spacing */
-  border: 1px solid #ddd; /* Add a border to match table cells */
-  border-radius: 8px; /* Match the athlete card border radius */
+  margin: 10px 0;
+  text-align: left;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
-/* Style the term (dt) and description (dd) to better fit the site */
+
 #individual-results dt {
   font-weight: bold;
   color: #143658;
 }
+
 #individual-results dd {
   margin-left: 1em;
   color: #555;
   font-style: italic;
 }
 
-/* Table styling */
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Multiple columns for large screens */
+  }
+}
+
+/* Table Styling */
 table {
-  width: 100%; /* Make table take full width */
+  width: 100%;
   max-width: 90%;
-  margin: 20px auto; /* Center the table */
+  margin: 20px auto;
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
-td a {
-  display: block; width: 100%; height: 100%;
-}
 
-/* Table header and cell styling */
-th, td:first-child {
+th, td {
   border: 1px solid #ddd;
   text-align: left;
   padding: 10px;
 }
 
-/* Header row styling */
 th {
   background-color: #f2f2f2;
   color: #333;
   font-weight: bold;
 }
 
-/* Striping pattern for rows */
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #cbcbcb2e;
 }
 
-@media (min-width: 768px) {
-  /* Apply hover effect only for larger screens (non-mobile) */
-  #meet-table td:first-child:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-  }
-}
-
-/* Accessibility: Focused row */
-*:focus {
-  outline: 2px solid #143658;
-}
-
-/* Responsive styling */
 @media (max-width: 768px) {
   table, tbody, tr, th, td {
     display: block;
-    width: 100%; /* Ensure table content is fully responsive */
+    width: 100%;
   }
+
   tr {
     border: 1px solid #ddd;
     margin-bottom: 10px;
   }
+
   td {
     border: none;
     position: relative;
@@ -180,6 +208,7 @@ tr:nth-child(even) {
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
+
   td::before {
     content: attr(data-label);
     position: absolute;
@@ -190,39 +219,60 @@ tr:nth-child(even) {
     text-align: left;
     color: #666;
   }
-  /* Adjust padding for better readability */
-  td {
-    padding: 8px 10px;
-  }
-  #meet-table tr:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-  }
+
   th {
-    display: none; /* Hide table headers for mobile */
-  }
-  #individual-results > :first-child {
-    grid-column: span 1;
+    display: none;
   }
 }
 
-/* Date and day styling inside table cells */
-.meet-date, .meet-day {
-  display: block;
-  font-size: 0.9em;
-  color: #666;
+@media (min-width: 768px) {
+  table {
+    display: table;
+    margin: auto;
+  }
+
+  th, td {
+    display: table-cell;
+    padding: 10px;
+  }
+
+  th {
+    display: table-cell;
+  }
 }
 
-/* Gallery styling */
+/* Animation for touch-friendly hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .athlete:hover {
+    animation: athlete-hover 0.3s ease-in-out forwards;
+  }
+
+  @keyframes athlete-hover {
+    from {
+      transform: scale(1);
+      box-shadow: none;
+    }
+    to {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+/* Priority Data on Mobile */
+@media (max-width: 768px) {
+  td[data-important="false"] {
+    display: none;
+  }
+}
+
+/* Gallery Styling */
 #gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-#gallery h2 {
-  width: 100%;
-  text-align: center;
-}
+
 #gallery img {
   margin: 10px;
   max-width: 100%;
@@ -230,15 +280,126 @@ tr:nth-child(even) {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-p {
-  text-align: center;
-}
-address {
-  text-align: center;
-}
 
 @media (min-width: 768px) {
   #gallery {
     justify-content: space-between;
   }
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode table {
+  background-color: #1212126f;
+  color: #fff; /* White text */
+}
+body.dark-mode a {
+  color: #fff; /* White text */
+}
+
+body.dark-mode #team-results {
+  color: #121212;
+}
+
+body.dark-mode #meet-table {
+  color: #121212;
+}
+body.dark-mode tr:nth-child(even) {
+  background-color: #2e2e2e;
+}
+body.dark-mode figcaption {
+  color: #121212;
+}
+
+body.dark-mode header, body.dark-mode nav ul, body-dark-mode footer {
+  background-color: #171717;
+}
+
+body-dark-mode th, body-dark-mode td {
+  background-color: #2e2e2e;
+  color: #fff;
+}
+
+body-dark-mode nav ul li a:hover, body-dark-mode header h1 a:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+body-dark-mode a {
+  color: #fff;
+}
+
+/* Toggle Switch Styles */
+.switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Addressing Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+p {
+  text-align: center;
+}
+
+address {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #143658;
+  color: white;
 }
