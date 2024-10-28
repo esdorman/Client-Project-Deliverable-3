@@ -186,6 +186,7 @@ table {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
   }
+  font-size: 20px;
 }
 
 th, td {
@@ -207,6 +208,7 @@ tr:nth-child(even) {
 table, tbody, tr, th, td {
   display: block;
   width: 100%;
+  margin: auto
 }
 
 table a {
@@ -249,14 +251,15 @@ th {
     display: table;
     margin: auto;
   }
+  table, tbody, tr, th, td {
+    display: block;
+    width: 94%;
+    margin: auto
+  }
 
   th, td {
     display: table-cell;
     padding: 10px;
-  }
-
-  th {
-    display: table-cell;
   }
 }
 
@@ -288,6 +291,12 @@ td[data-important="false"] {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+#gallery h2 {
+  width: 100%;
+  text-align: center;
+  display: block;
 }
 
 #gallery img {
