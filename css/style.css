@@ -69,23 +69,42 @@ header h1 a:hover {
   border-radius: 12px;
 }
 
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure the nav is above other content */
+  background-color: #143658;
+}
+
 nav ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 10px;
   list-style: none;
-  background-color: #143658;
+  position: relative; /* Added relative positioning */
+  width: 100%;
+}
+
+nav .underline {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: #f2f2f2;
+  transition: width 0.3s ease, transform 1s ease; /* Smooth transitions */
 }
 
 nav ul li {
   margin: 0 10px;
+  position: relative;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
   padding: 0.5em;
+  transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
@@ -96,6 +115,13 @@ nav ul li a:hover {
 
 nav ul li a:focus {
   outline: 2px solid #f2f2f2;
+}
+
+
+/* Style for the active navigation link */
+nav ul li a.active {
+  border-bottom: 2px solid #f2f2f2;
+  transition: border-bottom 0.3s ease, color 0.3s ease;
 }
 
 main {
@@ -111,6 +137,38 @@ footer a {
   color: #fff;
 }
 
+#team-results table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#team-results th, #team-results td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#team-results th {
+  background-color: #143658;
+  color: white;
+}
+
+#team-results th:nth-child(1),
+#team-results td:nth-child(1) {
+  width: 20%; /* Narrow the "Place" column */
+}
+
+#team-results th:nth-child(2),
+#team-results td:nth-child(2) {
+  width: 80%; /* Make the "Team" column wider to hold longer team names */
+}
+
+#team-results th:nth-child(3),
+#team-results td:nth-child(3) {
+  width: 20%; /* Adjust the "Score" column for a balanced layout */
+}
+
 #team-results h2 {
   text-align: center;
   padding: 10px;
@@ -123,6 +181,32 @@ footer a {
 
 #individual-results h2 {
   text-align: center;
+}
+
+/* Scroll-to-top button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  font-size: 20px;
+  display: none;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.scroll-to-top.visible {
+  display: block;
+}
+
+/* Highlighting PR athletes */
+.highlight {
+  border: 3px solid gold;
+  padding: 5px;
+  box-shadow: 0 0 10px gold;
 }
 
 .grid-container {
@@ -262,6 +346,19 @@ th {
     display: table-cell;
     padding: 10px;
   }
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #gallery {
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1024px) {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 }
 
 /* Animation for touch-friendly hover effects */
@@ -289,9 +386,10 @@ td[data-important="false"] {
 
 /* Gallery Styling */
 #gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 1em;
 }
 
 #gallery h2 {
@@ -306,12 +404,6 @@ td[data-important="false"] {
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-@media (min-width: 768px) {
-  #gallery {
-    justify-content: space-between;
-  }
 }
 
 /* Dark Mode */
@@ -329,41 +421,8 @@ body.dark-mode a {
   color: #fff; /* White text */
 }
 
-body-dark-mode nav ul {
-  background-color: #121212;
-}
-
-body-dark-mode footer {
-  background-color: #121212;
-}
-
-body-dark-mode #meet-table {
-  color: #121212;
-}
-
-body-dark-mode tr:nth-child(even) {
-  background-color: #2e2e2e;
-}
-
-body-dark-mode figcaption {
-  color: #121212;
-}
-
-body-dark-mode header, body-dark-mode nav ul, body-dark-mode footer {
-  background-color: #171717;
-}
-
-body-dark-mode th, body-dark-mode td {
-  background-color: #2e2e2e;
-  color: #fff;
-}
-
-body-dark-mode nav ul li a:hover, body-dark-mode header h1 a:hover {
+body.dark-mode nav ul li a:hover, body.dark-mode header h1 a:hover {
   background-color: #444;
-  color: #fff;
-}
-
-body-dark-mode a {
   color: #fff;
 }
 
@@ -466,8 +525,13 @@ address {
 }
 
 footer {
+  background-color: #143658;
+  color: #fff;
   text-align: center;
   padding: 20px;
-  background-color: #143658;
-  color: white;
+}
+
+footer address {
+  font-style: normal;
+  line-height: 1.6;
 }
