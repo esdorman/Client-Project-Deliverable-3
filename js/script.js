@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
+  // Make entire row of table clickable
   const rows = document.querySelectorAll("tr[data-url]");
 
     rows.forEach(row => {
@@ -29,22 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = url;
         });
 
-        // Optional: Change cursor to indicate clickable rows
+        // Change cursor to indicate clickable rows
         row.style.cursor = "pointer";
     });
-  
-  // Navigation menu toggle
-  const menuToggle = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('visible');
-    });
-  }
 
   // Scroll-to-top button
   const scrollToTopButton = document.createElement('button');
-  scrollToTopButton.innerText = '↑ Top';
+  scrollToTopButton.innerText = '🚀 Top';
   scrollToTopButton.classList.add('scroll-to-top');
   document.body.appendChild(scrollToTopButton);
 
@@ -89,12 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const filteredNavLinks = Array.from(navLinks).slice(1);
 
   function changeActiveLink() {
+    // Ensure sections and filteredNavLinks contain elements
+    if (sections.length === 0 || filteredNavLinks.length === 0) return;
+
     let index = sections.length;
 
     while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
 
     filteredNavLinks.forEach((link) => link.classList.remove('active'));
-    if (index >= 0) {
+
+    // Add a check to ensure filteredNavLinks[index] exists
+    if (index >= 0 && filteredNavLinks[index]) {
       filteredNavLinks[index].classList.add('active');
     }
   }
