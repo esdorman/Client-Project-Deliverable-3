@@ -20,6 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  const rows = document.querySelectorAll("tr[data-url]");
+
+    rows.forEach(row => {
+        row.addEventListener("click", () => {
+            const url = row.getAttribute("data-url");
+            window.location.href = url;
+        });
+
+        // Optional: Change cursor to indicate clickable rows
+        row.style.cursor = "pointer";
+    });
   
   // Navigation menu toggle
   const menuToggle = document.getElementById('menu-toggle');

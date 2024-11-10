@@ -145,7 +145,7 @@ footer a {
 
 #team-results th, #team-results td {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #848484;
   text-align: left;
 }
 
@@ -172,6 +172,12 @@ footer a {
 #team-results h2 {
   text-align: center;
   padding: 10px;
+}
+
+#meet-table tr:not(:first-child):hover {
+  background-color: #143658; /* Matches the link hover background color */
+  padding: 0.2em 0.5em;
+  border-radius: 6px;
 }
 
 /* Individual Results Section */
@@ -221,6 +227,67 @@ footer a {
   padding: 10px;
   text-align: center;
   background-color: #ddd;
+}
+
+.athlete-card {
+  padding-bottom: 60px;
+}
+
+.card-inner {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.athlete-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+}
+
+.card-front {
+  background-color: #ddd;
+}
+
+.card-back {
+  background-color: #dedede;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+}
+
+.card-front img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+.card-back dl {
+  margin: 0;
+  padding: 10px;
+}
+
+.card-back dt, .card-back dd {
+  margin: 5px;
+}
+
+.card-back dt {
+  font-weight: bold;
+  color: #143658;
+}
+
+.card-back dd {
+  color: #555;
+  font-style: italic;
 }
 
 #individual-results figure {
@@ -300,13 +367,6 @@ table a {
   transition: color 0.3s, background-color 0.3s;
 }
 
-table a:hover {
-  color: #f2f2f2;
-  background-color: #276eb5;
-  padding: 0.2em 0.5em;
-  border-radius: 6px;
-}
-
 td {
   border: none;
   position: relative;
@@ -356,7 +416,7 @@ th {
 
   @media (min-width: 1024px) {
     .grid-container {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(7, 1fr);
     }
   }
 }
@@ -449,6 +509,24 @@ body.dark-mode #individual-results dd {
   color: #ddd;
 }
 
+body.dark-mode #summary {
+  text-align: center;
+  background-color: rgba(58, 58, 58, 0.582);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+body.dark-mode .card-back {
+  background-color: #333333;
+}
+
+body.dark-mode .card-front {
+  background-color: #333333;
+}
+
+body.dark-mode figcaption {
+  background-color: #333333;
+}
 /* Toggle Switch Styles */
 .switch {
   position: relative;
@@ -518,6 +596,13 @@ input:checked + .slider:before {
 
 p {
   text-align: center;
+}
+
+#summary {
+  text-align: center;
+  background-color: rgba(177, 177, 177, 0.582);
+  border-radius: 8px;
+  padding: 10px;
 }
 
 address {
